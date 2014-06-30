@@ -1,0 +1,64 @@
+<!-- <div ng-controller="MyCtrl">
+      <input type="text" ng-model="data.message" placeholder="Enter a name here">
+
+      <h1>Hello {{data.message | reverse}}!</h1>
+    </div>
+ 
+
+    <!--Using the ng-init directivr -->
+    <!--<div ng-init="names=[{name: 'abc', city: 'mumbai'},{name: 'pqr',city: 'delhi'},{name: 'www', city: 'pune'},{name: 'fff', city: 'goa'},{name: 'ttt', city: 'hubli'}]">
+      <ul>
+        <li ng-repeat = "n in names "> {{n.name}} -{{n.city}}  </li>
+      </ul>
+    </div>-->
+     
+    <!-- Using the ng-controller --> 
+    <!--<div>
+      <ul>
+        <li ng-repeat = "state in states"> {{state.name}} -{{state.capital}}  </li>
+      </ul>
+    </div>
+ -->
+
+    <div class="container">
+    <div class="col-sm-6 col-sm-offset-2">
+    <div class="page-header"><h1>Car Design Managment</h1></div>
+     <button class="btn btn-primary" ng-click="clicked=true" value="ADD +" id="check-box">ADD + </button>
+
+     <div ng-show="clicked">
+    <!-- pass in the variable if our form is valid or invalid -->
+       </br>
+    <form name="carForm" ng-submit="submit()" >
+       
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="name" class="form-control" ng-model="carName" required>
+        </div>
+
+      
+        <div class="form-group">
+            <label>Type</label>
+            <input type="text" name="type" class="form-control" ng-model="carType" required>
+        </div>
+        
+        
+        <div class="form-group">
+            <label>Gear</label>
+            <input type="text" name="gear" class="form-control" ng-model="carGear" required>
+        </div>
+        
+        <!-- SUBMIT BUTTON -->
+        <button type="submit" class="btn btn-primary"  >Submit</button>
+        
+    </form>
+  </div>
+  <table>
+    <tr>
+      <td > {{list}}</td>
+         </tr>
+  </table>
+</div>
+</div>
+    <!-- 
+<div>
+    <a href="#/view2">View2</a></div> -->
