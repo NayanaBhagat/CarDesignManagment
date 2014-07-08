@@ -4,16 +4,18 @@ carApp.controller('CarCtrl',function($scope){
 	// function to submit the form after all validation has occurred			
 	$scope.list = [];
    
-    $scope.submit = function() {     
-         $scope.list.push(this.carName);
-         $scope.list.push(this.carType);
-         $scope.list.push(this.carGear);
-          $scope.carName = '';
-    $scope.carType = '';
-    $scope.carGear = '';
-     };	    	
+    $scope.submit = function() {    
+    $scope.list.push($scope.car);
+    //$scope.list.push(this.carType);
+    //$scope.list.push(this.carGear);
+    //$scope.carName = '';
+    //$scope.carType = '';
+    //$scope.carGear = '';
+    console.log($scope.car);
+    $scope.car="";
+    };	    	
 		
-	});
+});
 // $scope.states = [
 // 	  {name: 'Goa', capital: 'Panjim'},
 // 	  {name: 'Kerela', capital: 'Trivandrum'},

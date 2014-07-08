@@ -28,33 +28,48 @@
      <div ng-show="clicked">
     <!-- pass in the variable if our form is valid or invalid -->
        </br>
-    <form name="carForm" ng-submit="submit()" >
+    <form name="carForm" ng-submit="carForm.$valid && submit()" novalidate >
        
         <div class="form-group">
             <label>Name</label>
-            <input type="text" name="name" class="form-control" ng-model="carName" required>
+            <input type="text" name="name" class="form-control" ng-model="car.Name" required>
         </div>
 
       
         <div class="form-group">
             <label>Type</label>
-            <input type="text" name="type" class="form-control" ng-model="carType" required>
+            <input type="text" name="type" class="form-control" ng-model="car.Type" required>
         </div>
-        
         
         <div class="form-group">
             <label>Gear</label>
-            <input type="text" name="gear" class="form-control" ng-model="carGear" required>
+            <input type="text" name="gear" class="form-control" ng-model="car.Gear" required>
         </div>
         
         <!-- SUBMIT BUTTON -->
         <button type="submit" class="btn btn-primary"  >Submit</button>
         
     </form>
+
   </div>
-  <table>
+  <table class="table table-striped">
     <tr>
-      <td > {{list}}</td>
+      <td>
+        Car Name 
+      </td>
+      <td>
+        Car Type
+      </td>
+      <td>
+        Gears
+      </td>    
+    <tr ng-repeat="item in list">
+      <td > 
+        {{item.Name}}</td>
+      <td > 
+        {{item.Type}}</td>
+      <td > 
+        {{item.Gear}}</td>    
          </tr>
   </table>
 </div>
