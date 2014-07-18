@@ -28,7 +28,7 @@
      <div ng-show="clicked">
     <!-- pass in the variable if our form is valid or invalid -->
        </br>
-    <form name="carForm" ng-submit="carForm.$valid && submit()" novalidate >
+    <form name="carForm" ng-submit="carForm.$valid && save(car)" novalidate>
        
         <div class="form-group">
             <label>Name</label>
@@ -40,6 +40,7 @@
             <label>Type</label>
             <input type="text" name="type" class="form-control" ng-model="car.Type" required>
         </div>
+        
         
         <div class="form-group">
             <label>Gear</label>
@@ -62,15 +63,15 @@
       </td>
       <td>
         Gears
-      </td>    
-    <tr ng-repeat="item in list">
-      <td > 
-        {{item.Name}}</td>
-      <td > 
-        {{item.Type}}</td>
-      <td > 
-        {{item.Gear}}</td>    
-         </tr>
+      </td> 
+      <td>
+      </td>   
+    <tr ng-repeat="item in list track by $index">
+      <td >{{item.Name}}</td>
+      <td >{{item.Type}}</td>
+      <td >{{item.Gear}}</td>
+      <td ><a href="#/view2"><span class="glyphicon glyphicon-circle-arrow-right"></span></a></td>
+    </tr>
   </table>
 </div>
 </div>

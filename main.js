@@ -1,36 +1,36 @@
-var carApp = angular.module('carApp',['ngRoute']);
+var carApp = angular.module('carApp',['ngRoute','LocalStorageModule']);
 
-carApp.controller('CarCtrl',function($scope){
-	// function to submit the form after all validation has occurred			
-	$scope.list = [];
-   
-    $scope.submit = function() {    
-    $scope.list.push($scope.car);
-    //$scope.list.push(this.carType);
-    //$scope.list.push(this.carGear);
-    //$scope.carName = '';
-    //$scope.carType = '';
-    //$scope.carGear = '';
-    console.log($scope.car);
-    $scope.car="";
-    };	    	
-		
+carApp.controller('CarCtrl',function($scope,localStorageService){
+    $scope.a = [];
+    $scope.list=[];
+    $scope.list= JSON.parse(localStorage.getItem('session3'));
+    //localStorage.setItem('session', JSON.stringify($scope.a));
+    // console.log(a);
+    $scope.save = function(car) {
+      localStorage.setItem('session2',JSON.stringify(car));
+      $scope.a = JSON.parse(localStorage.getItem('session2'));
+      $scope.list.push($scope.a);
+      localStorage.setItem('session3',JSON.stringify($scope.list));
+      $scope.list = JSON.parse(localStorage.getItem('session3'));
+      console.log($scope.list);
+      $scope.car="";
+     };	    	
+		   
 });
-// $scope.states = [
-// 	  {name: 'Goa', capital: 'Panjim'},
-// 	  {name: 'Kerela', capital: 'Trivandrum'},
-// 	  {name: 'Karnataka', capital: 'Banglore'}
-// 	];
-// // $scope.reverseMessage = function () {
-// // 	return $scope.data.message.split("").reverse().join("");
-// // }	
+
+
+// app.controller("MaintCtrl", function(LS) {
+//   this.greeting = "This is a localstorage demo app";
+//   this.value = LS.getData();
+//   this.latestData = function() {
+//     return LS.getData();
+//   };
+//   this.update = function(val) {
+//     return LS.setData(val);
+//   };
 // });
 
-// myApp.filter('reverse',function(){
-// 	return function(text){
-// 		return text.split("").reverse().join("");
-// 	}
-// });
+
 
 	
 		
@@ -48,3 +48,4 @@ carApp.config(function ($routeProvider) {
             })
 	    .otherwise({redirectTo: '/'});
 });
+
