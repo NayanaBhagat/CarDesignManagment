@@ -1,17 +1,13 @@
 var carApp = angular.module('carApp',['ngRoute','LocalStorageModule']);
 
 carApp.controller('CarCtrl',function($scope,localStorageService){
-    $scope.a = [];
     $scope.list=[];
-    $scope.list= JSON.parse(localStorage.getItem('session3'));
-    //localStorage.setItem('session', JSON.stringify($scope.a));
-    // console.log(a);
+    $scope.list= localStorage.getItem('session');
+    $scope.list = $scope.list != null ? JSON.parse($scope.list) : [];
     $scope.save = function(car) {
-      localStorage.setItem('session2',JSON.stringify(car));
-      $scope.a = JSON.parse(localStorage.getItem('session2'));
-      $scope.list.push($scope.a);
-      localStorage.setItem('session3',JSON.stringify($scope.list));
-      $scope.list = JSON.parse(localStorage.getItem('session3'));
+      $scope.list.push($scope.car);
+      localStorage.setItem('session',JSON.stringify($scope.list));
+      $scope.list = JSON.parse(localStorage.getItem('session'));
       console.log($scope.list);
       $scope.car="";
      };	    	
