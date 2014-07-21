@@ -3,6 +3,7 @@ var carApp = angular.module('carApp',['ngRoute','LocalStorageModule']);
 carApp.controller('CarCtrl',function($scope,localStorageService){
     $scope.list=[];
     $scope.list= localStorage.getItem('session');
+    $scope.carDetails = []; 
     $scope.list = $scope.list != null ? JSON.parse($scope.list) : [];
     $scope.save = function(car) {
       $scope.list.push($scope.car);
@@ -10,26 +11,24 @@ carApp.controller('CarCtrl',function($scope,localStorageService){
       $scope.list = JSON.parse(localStorage.getItem('session'));
       console.log($scope.list);
       $scope.car="";
-     };	    	
-		   
+     };
+
+    $scope.deleteCar = function(index){
+      $scope.list.splice(index,1);
+      console.log($scope.list);
+      localStorage.setItem('session',JSON.stringify($scope.list));
+    }; 
+
+    $scope.showCar = function(index){
+     alert(JSON.stringify($scope.list[index]));
+     $scope.carDetails.push(JSON.stringify($scope.list[index])); 
+     console.log($scope.carDetails);
+     alert($scope.carDetails);
+    };
+	 
 });
 
 
-// app.controller("MaintCtrl", function(LS) {
-//   this.greeting = "This is a localstorage demo app";
-//   this.value = LS.getData();
-//   this.latestData = function() {
-//     return LS.getData();
-//   };
-//   this.update = function(val) {
-//     return LS.setData(val);
-//   };
-// });
-
-
-
-	
-		
 carApp.config(function ($routeProvider) {
 	$routeProvider
 	    .when('/',
