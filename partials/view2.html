@@ -1,29 +1,53 @@
 <div class="container">
 <div class="col-sm-8 col-sm-offset-2">
 <div class="page-header"><h1>Car Design Managment</h1></div>
-<button type="button" class="btn btn-info">Stage 1</button></br></br>
-<button type="button" class="btn btn-info" disabled="disabled">Stage 2</button></br></br>
-<button type="button" class="btn btn-info" disabled="disabled">Stage 3</button>
-<table class="table table-striped">
-    <tr>
-      <td>
-        Car Name 
-      </td>
-      <td>
-        Car Type
-      </td>
-      <td>
-        Gears
-      </td> 
-      <td>
-      </td>   <td>
-      </td> 
-  </tr>
-    <tr>
-      <td >{{carDetails}}</td>
-      <td >{{carDetails.Type}}</td>
-      <td >{{carDetails.Gear}}</td>
-    </tr>
-  </table>
+<h4>Car Name: {{carDetails.Name}}</h4>
+<h4>Car Type : {{carDetails.Type}}</h4>
+<h4>Car Gear : {{carDetails.Gear}}</h4>
+<div style="width:25%">
+<button type="button" class="btn btn-info  btn-block" ng-click="design= !design">Design</button>
+<div ng-show="design">
+    <!-- pass in the variable if our form is valid or invalid -->
+       </br>
+    <form name="designForm" ng-show="design" novalidate>
+       
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text">
+        </div>
+
+    </form>
+</div>
+</br></br>
+<button type="button" class="btn btn-info  btn-block"  ng-click="manufacture= !manufacture">Manufacture</button>
+<div ng-show="manufacture">
+    <!-- pass in the variable if our form is valid or invalid -->
+       </br>
+    <form name="manufactureForm"  novalidate>
+       
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text">
+        </div>
+
+    </form>
+</div>
+</br></br>
+<button type="button" class="btn btn-info  btn-block" ng-click="production= !production">Production</button>
+<div ng-show="production">
+    <!-- pass in the variable if our form is valid or invalid -->
+       </br>
+    <form name="productionForm"  novalidate>
+       
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text">
+        </div>
+
+    </form>
+</div>
+</div>
+
+
   </div>
 </div>
