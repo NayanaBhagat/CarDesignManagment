@@ -5,35 +5,41 @@
 <h4>Car Type : {{carDetails.Type}}</h4>
 <h4>Car Gear : {{carDetails.Gear}}</h4>
 <div style="width:25%">
-<button type="button" class="btn btn-info  btn-block" ng-click="design= !design">Design</button>
-<div ng-show="design">
-    <!-- pass in the variable if our form is valid or invalid -->
-       </br>
-    <form name="designForm" ng-show="design" novalidate>
-       
-        <div class="form-group">
-            <label>Name</label>
-            <input type="text">
-        </div>
 
+
+
+  <button type="button" class="btn btn-info  btn-block" ng-click="design= !design">Design</button>
+<div ng-show="design">
+       </br>
+    <form name="designForm" ng-show="design"  >
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" required ng-disabled="input1">
+      </div>
+      <button type="submit" class="btn btn-primary" ng-model="isDisabled1" ng-click="designSubmit()" ng-disabled="submit1" >Submit</button>
     </form>
 </div>
-</br></br>
-<button type="button" class="btn btn-info  btn-block"  ng-click="manufacture= !manufacture">Manufacture</button>
+</br>
+
+
+<button type="button" class="btn btn-info  btn-block"  ng-click="manufacture= !manufacture" ng-show="manu">Manufacture</button>
 <div ng-show="manufacture">
-    <!-- pass in the variable if our form is valid or invalid -->
+  
        </br>
     <form name="manufactureForm"  novalidate>
        
         <div class="form-group">
             <label>Name</label>
-            <input type="text">
+            <input type="text" required ng-disabled="input2">
         </div>
 
+        <button type="submit" class="btn btn-primary" ng-model="isDisabled2" ng-click="disable2()" ng-disabled="submit2" >Submit</button>
     </form>
 </div>
-</br></br>
-<button type="button" class="btn btn-info  btn-block" ng-click="production= !production">Production</button>
+</br>
+
+
+<button type="button" class="btn btn-info  btn-block" ng-click="production= !production"ng-show="prod" >Production</button>
 <div ng-show="production">
     <!-- pass in the variable if our form is valid or invalid -->
        </br>
@@ -43,11 +49,11 @@
             <label>Name</label>
             <input type="text">
         </div>
-
+        <button type="submit" class="btn btn-primary" ng-model="isDisabled3" ng-click="disable3()" ng-disabled="submit3" >Submit</button>
     </form>
 </div>
 </div>
-
+</br>
 
   </div>
 </div>

@@ -50,7 +50,29 @@ carApp.controller('CarDetailsCtrl',function($scope,carService,$routeParams) {
   $scope.design = false;
   $scope.manufacture = false;
   $scope.production = false;
+
+  $scope.isDisabled1 = false;
+  $scope.manu=false;
+    $scope.disable1 = function() {
+        $scope.input1 = true;
+        $scope.submit1= true;
+        $scope.manu=true;
+
+        return false;
+    }
+
+  $scope.isDisabled2 = false;
+  $scope.prod=false;
+    $scope.disable2 = function() {
+        $scope.input2 = true;
+        $scope.submit2= true;
+        $scope.prod=true;
+
+        return false;
+    }
+
  });
+
 
 carApp.config(function ($routeProvider) {
 	$routeProvider
