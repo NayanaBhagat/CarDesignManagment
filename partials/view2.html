@@ -8,48 +8,62 @@
 
 
 
-  <button type="button" class="btn btn-info  btn-block" ng-click="design= !design">Design</button>
-<div ng-show="design">
+<button type="button" class="btn btn-info  btn-block" ng-click="design= !design">Design</button> 
+<div ng-show="submittedDesign">
+Seat --- {{seat}} </br>
+Door --- {{door}}
+</div>
+<div  ng-hide="submittedDesign">
        </br>
-    <form name="designForm" ng-show="design"  >
+    <form name="designForm" ng-show="design">
       <div class="form-group">
-        <label>Name</label>
-        <input type="text" required ng-disabled="input1">
+        <label>Seat</label>
+        <input type="text" ng-model="car.seat" >
       </div>
-      <button type="submit" class="btn btn-primary" ng-model="isDisabled1" ng-click="designSubmit()" ng-disabled="submit1" >Submit</button>
+      <div class="form-group">
+        <label>Door</label>
+        <input type="text" ng-model="car.door" >
+      </div>
+
+      <button type="submit" class="btn btn-primary" ng-model="submit1" ng-click=" designSubmit(car);submittedDesign=true" ng-disabled="submit1"   >Submit</button>
     </form>
 </div>
 </br>
 
 
 <button type="button" class="btn btn-info  btn-block"  ng-click="manufacture= !manufacture" ng-show="manu">Manufacture</button>
-<div ng-show="manufacture">
-  
-       </br>
-    <form name="manufactureForm"  novalidate>
+<div ng-show="submittedManuf">
+Time --- {{duration}} </br>
+</div>
+<div  ng-hide="submittedManuf">
+  </br>
+    <form name="manufactureForm"  ng-show="manufacture">
        
         <div class="form-group">
-            <label>Name</label>
-            <input type="text" required ng-disabled="input2">
+            <label>Time</label>
+            <input type="text" ng-model="car.duration" >
         </div>
 
-        <button type="submit" class="btn btn-primary" ng-model="isDisabled2" ng-click="disable2()" ng-disabled="submit2" >Submit</button>
+        <button type="submit" class="btn btn-primary" ng-model="submit2" ng-click="manufSubmit(car);submittedManuf=true" ng-disabled="submit2" >Submit</button>
     </form>
 </div>
 </br>
 
 
 <button type="button" class="btn btn-info  btn-block" ng-click="production= !production"ng-show="prod" >Production</button>
-<div ng-show="production">
+<div ng-show="submittedProd">
+Cost --- {{cost}} </br>
+</div>
+<div  ng-hide="submittedProd">
     <!-- pass in the variable if our form is valid or invalid -->
        </br>
-    <form name="productionForm"  novalidate>
+    <form name="productionForm" ng-show="production">
        
         <div class="form-group">
-            <label>Name</label>
-            <input type="text">
+            <label>Cost</label>
+            <input type="text" ng-model="car.cost">
         </div>
-        <button type="submit" class="btn btn-primary" ng-model="isDisabled3" ng-click="disable3()" ng-disabled="submit3" >Submit</button>
+        <button type="submit" class="btn btn-primary" ng-model="submit3" ng-click="prodSubmit(car);submittedProd=true" ng-disabled="submit3" >Submit</button>
     </form>
 </div>
 </div>

@@ -51,25 +51,35 @@ carApp.controller('CarDetailsCtrl',function($scope,carService,$routeParams) {
   $scope.manufacture = false;
   $scope.production = false;
 
-  $scope.isDisabled1 = false;
+  $scope.submit1 = false;
   $scope.manu=false;
-    $scope.disable1 = function() {
-        $scope.input1 = true;
+    $scope.designSubmit = function(car) {
         $scope.submit1= true;
         $scope.manu=true;
-
+        $scope.car="";
+        $scope.seat = car.seat;
+        $scope.door = car.door;
         return false;
     }
 
-  $scope.isDisabled2 = false;
+  $scope.submit2 = false;
   $scope.prod=false;
-    $scope.disable2 = function() {
-        $scope.input2 = true;
+    $scope.manufSubmit = function(car) {
         $scope.submit2= true;
         $scope.prod=true;
-
+        $scope.car="";
+        $scope.duration = car.duration;
         return false;
     }
+  
+  $scope.submit3 = false;
+    $scope.prodSubmit = function(car) {
+        $scope.submit3= true;
+        $scope.car="";
+        $scope.cost = car.cost;
+        return false;
+    }
+
 
  });
 
