@@ -10,20 +10,20 @@
 
 
 <button type="button" class="btn btn-info  btn-block" ng-click="design= !design">Design</button> 
-<div ng-show="submittedDesign" >
-Car Seat : {{carAttri.seat}}
-Car Door : {{carAttri.door}}
+<div >
+Car Seat : {{carAttri.Seat}}
+Car Door : {{carAttri.Door}}
 </div>
 <div  ng-hide="submittedDesign">
        </br>
     <form name="designForm" ng-show="design">
       <div class="form-group">
         <label>Seat</label>
-        <input type="text" ng-model="car.Seat" >
+        <input type="text" ng-model="car.Seat" required>
       </div>
       <div class="form-group">
         <label>Door</label>
-        <input type="text" ng-model="car.Door" >
+        <input type="text" ng-model="car.Door" required>
       </div>
 
       <button type="submit" class="btn btn-primary" ng-model="submit1" ng-click=" designSubmit(car);submittedDesign=true" ng-disabled="submit1"   >Submit</button>
@@ -34,7 +34,7 @@ Car Door : {{carAttri.door}}
 
 <button type="button" class="btn btn-info  btn-block"  ng-click="manufacture= !manufacture" ng-show="manu">Manufacture</button>
 <div ng-show="submittedManuf">
-Time --- {{carAttri.duration}} </br>
+Manufacture Time: {{carAttri.duration}} </br>
 </div>
 <div  ng-hide="submittedManuf">
   </br>
@@ -42,7 +42,7 @@ Time --- {{carAttri.duration}} </br>
        
         <div class="form-group">
             <label>Time</label>
-            <input type="text" ng-model="car.Duration" >
+            <input type="text" ng-model="car.Duration" required>
         </div>
 
         <button type="submit" class="btn btn-primary" ng-model="submit2" ng-click="manufSubmit(car);submittedManuf=true" ng-disabled="submit2" >Submit</button>
@@ -53,7 +53,7 @@ Time --- {{carAttri.duration}} </br>
 
 <button type="button" class="btn btn-info  btn-block" ng-click="production= !production"ng-show="prod" >Production</button>
 <div ng-show="submittedProd">
-Cost --- {{carAttri.cost}} </br>
+Cra cost : {{carAttri.cost}} </br>
 </div>
 <div  ng-hide="submittedProd">
     <!-- pass in the variable if our form is valid or invalid -->

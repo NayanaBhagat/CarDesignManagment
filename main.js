@@ -6,15 +6,19 @@ var carApp = angular.module('carApp',['ngRoute','LocalStorageModule']);
         var CONSTANT_ID=0; 
         var car,item;
         carList= localStorage.getItem('session');
-        carList = carList != null ? JSON.parse(carList) : [];
+
         return {
-          saveCar:function (car) {
-          car.id=localStorage.getItem('session1');
+          saveCar:function (car) {      
+          carList = carList != null ? carList : [];
+          //car.id=localStorage.getItem('session1');
           CONSTANT_ID=CONSTANT_ID+1;
+          console.log(CONSTANT_ID);
           car.id=CONSTANT_ID;
-          localStorage.setItem('session1',car.id);
+          console.log(car.id);
+          console.log(car);
           carList.push(car);
           localStorage.setItem('session',JSON.stringify(carList));
+          console.log(carList);
           },
           getAllCars:function() {
           carList = JSON.parse(localStorage.getItem('session'));
@@ -29,21 +33,14 @@ var carApp = angular.module('carApp',['ngRoute','LocalStorageModule']);
             for ( item in carList){
               if (carList[item].id == id){
                 if(type==1){
-                carList[item].seat = car.Seat;
-                carList[item].door = car.Door;
-                //carList[item]=localStorage.getItem('session2');
-                //console.log(JSON.stringify(carList));
+                carList[item].Seat = car.Seat;
+                carList[item].Door = car.Door;
                 }
                 else if(type==2){
-                //carList[item]=localStorage.getItem('session2');
                 carList[item].duration = car.Duration;
-                //localStorage.setItem('session2',carList[item]);
                 }
-                else
-                {
-                //carList[item]=localStorage.getItem('session2');
+                else{
                 carList[item].cost = car.Cost;
-                //localStorage.setItem('session2',carList[item]);
                 }
               } 
             }
@@ -56,6 +53,7 @@ carApp.controller('CarCtrl', function($scope,$location, $routeParams,carService,
     $scope.list=[];
     
     $scope.list = carService.getAllCars();
+    $scope.list = $scope.list != null ? $scope.list : [];
     $scope.save = function(car) {
       carService.saveCar(car);
       $scope.car="";
@@ -75,27 +73,31 @@ carApp.controller('CarCtrl', function($scope,$location, $routeParams,carService,
 
 carApp.controller('CarDetailsCtrl',function($scope,carService,$routeParams,localStorageService) {
   $scope.carDetails = [];
-  $scope.carAttri = [];
   $scope.list = carService.getAllCars();
   $scope.carDetails = $scope.list[$routeParams.carId];
   $scope.design = false;
   $scope.manufacture = false;
   $scope.production = false;
-  console.log("First:"+$scope.carAttri);
   //function for submitting design phase
   $scope.submit1 = false;
-  $scope.manu=false;
-  console.log("Outside the method "+JSON.stringify($scope.carDetails));
+  $scope.manu= false;
+  $scope.values = localStorage.getItem('UISession1');
+  $scope.carAttri = JSON.parse(localStorage.getItem('carSession'));
+  console.log($scope.carAttri);
+  if($scope.values == true){
+   $scope.manufacture =true ; 
+  }
 
     $scope.designSubmit = function(car) {
       var type= 1;
-       $scope.carDetails=carService.updateCar($scope.carDetails.id,car,type);
+       $scope.carAttri=carService.updateCar($scope.carDetails.id,car,type);
        $scope.submit1= true;
+       $scope.car = "";
        $scope.manu=true;
-       $scope.car="";
-       localStorage.setItem('carSession',JSON.stringify($scope.carDetails));
+       localStorage.setItem('UISession1',$scope.submit1,$scope.manu);
+       localStorage.setItem('carSession',JSON.stringify($scope.carAttri));
        $scope.carAttri = JSON.parse(localStorage.getItem('carSession'));
-       console.log("Second"+$scope.carAttri);
+       console.log("third"+$scope.carAttri);
        return false;
     }
   
@@ -103,13 +105,14 @@ carApp.controller('CarDetailsCtrl',function($scope,carService,$routeParams,local
   //function for submitting manufacture phase
   $scope.submit2 = false;
   $scope.prod=false;
-    $scope.manufSubmit = function(car) {
+    $scope.manufSubmit = function(car){
       var type = 2;
-       $scope.carDetails=carService.updateCar($scope.carDetails.id,car,type);
+       $scope.carAttri=carService.updateCar($scope.carDetails.id,car,type);
         $scope.submit2= true;
         $scope.prod=true;
         $scope.car="";
-        localStorage.setItem('carSession',JSON.stringify($scope.carDetails));
+        localStorage.setItem('UISession2',$scope.submit2,$scope.prod);
+        localStorage.setItem('carSession',JSON.stringify($scope.carAttri));
         $scope.carAttri = JSON.parse(localStorage.getItem('carSession'));
         console.log("third"+$scope.carAttri);
         return false;
@@ -121,11 +124,12 @@ carApp.controller('CarDetailsCtrl',function($scope,carService,$routeParams,local
   $scope.submit3 = false;
     $scope.prodSubmit = function(car) {
       var type = 3;
-      $scope.carDetails=carService.updateCar($scope.carDetails.id,car,type);
-      localStorage.setItem('session2',$scope.carDetails);
+      $scope.carAttri=carService.updateCar($scope.carAttri.id,car,type);
+      localStorage.setItem('session2',$scope.carAttri);
         $scope.submit3= true;
         $scope.car="";
-        localStorage.setItem('carSession',JSON.stringify($scope.carDetails));
+        localStorage.setItem('UISession3',$scope.submit3);
+        localStorage.setItem('carSession',JSON.stringify($scope.carAttri));
         $scope.carAttri = JSON.parse(localStorage.getItem('carSession'));
         console.log("fourth"+$scope.carAttri);
         return false;
