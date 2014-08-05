@@ -9,10 +9,10 @@
 
 
 
-<button type="button" class="btn btn-info  btn-block" ng-click="design= !design">Design</button> 
-<div >
-Car Seat : {{carAttri.Seat}}
-Car Door : {{carAttri.Door}}
+<button type="button" class="btn btn-info  btn-block" ng-click="design= !design" ng-disabled="carDetails.Seat">Design</button> 
+<div ng-show="carDetails.Seat" >
+Car Seat : {{carDetails.Seat}}
+Car Door : {{carDetails.Door}}
 </div>
 <div  ng-hide="submittedDesign">
        </br>
@@ -32,9 +32,9 @@ Car Door : {{carAttri.Door}}
 </br>
 
 
-<button type="button" class="btn btn-info  btn-block"  ng-click="manufacture= !manufacture" ng-show="manu">Manufacture</button>
-<div ng-show="submittedManuf">
-Manufacture Time: {{carAttri.duration}} </br>
+<button type="button" class="btn btn-info  btn-block"  ng-click="manufacture= !manufacture" ng-show="manu" ng-disabled="carDetails.Duration">Manufacture</button>
+<div ng-show="carDetails.Duration">
+Manufacture Time: {{carDetails.Duration}} </br>
 </div>
 <div  ng-hide="submittedManuf">
   </br>
@@ -51,9 +51,9 @@ Manufacture Time: {{carAttri.duration}} </br>
 </br>
 
 
-<button type="button" class="btn btn-info  btn-block" ng-click="production= !production"ng-show="prod" >Production</button>
-<div ng-show="submittedProd">
-Cra cost : {{carAttri.cost}} </br>
+<button type="button" class="btn btn-info  btn-block" ng-click="production= !production"ng-show="prod" ng-disabled="carDetails.Cost">Production</button>
+<div ng-show="carDetails.Cost">
+Car cost : {{carDetails.Cost}} </br>
 </div>
 <div  ng-hide="submittedProd">
     <!-- pass in the variable if our form is valid or invalid -->
